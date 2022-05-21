@@ -3,7 +3,8 @@
 
 while getopts ":abcde"  opt; do
 	case $opt in
-		a)	
+		a)
+			#Összeadás
 			echo "Add meg az elso szamot"
 			read x
 			echo "Add meg a második számot"
@@ -11,7 +12,8 @@ while getopts ":abcde"  opt; do
 			sum=$(($x+$y))
 			echo "Az eredmeny $sum"
 			;;
-		b)	
+		b)
+			#Kivonás
 			echo "Add meg az elso szamot"
 			read x
 			echo "Add meg a második számot"
@@ -20,12 +22,13 @@ while getopts ":abcde"  opt; do
 			echo "Az eredmeny $dec"
 			;;
 		c)
-
+			#Adatlekérdezés egy felhasználó által megadott Url-ről
 			echo "Add meg az url-t"
 			read url
 			curl "$url"  > adatoknetrol.txt
 			;;
 		d)
+			#Az urlből lekéri egy adott szóból mennyi található
 			echo "Add meg a keresett szót"
 			read szo
 			echo "Keresek..."
@@ -33,6 +36,7 @@ while getopts ":abcde"  opt; do
 			grep -c $szo adatoknetrol.txt 
 			;;
 		e)
+			#szimpla grep
 			echo "Add meg a keresett szót:"
 			read szo
 			echo "Keresek..."
