@@ -1,22 +1,42 @@
 #!/bin/bash
-	
-while getopts a:b:c:d  opt; do
+
+
+while getopts ":abcde"  opt; do
 	case $opt in
-		a)
-			
-			echo "Teszt" > test.txt
-			
+		a)	
+			echo "Add meg az elso szamot"
+			read x
+			echo "Add meg a második számot"
+			read y
+			sum=$(($x+$y))
+			echo "Az eredmeny $sum"
 			;;
-		b)
-			cat test.txt
-			;;	
+		b)	
+			echo "Add meg az elso szamot"
+			read x
+			echo "Add meg a második számot"
+			read y
+			dec=$(($x-$y))
+			echo "Az eredmeny $dec"
+			;;
 		c)
-			link=$OPTARG
-			curl "$link"  >adatoknetrol.txt
+
+			echo "Add meg az url-t"
+			read url
+			curl "$url"  > adatoknetrol.txt
 			;;
 		d)
-			szo=$OPTARG
-			grep $szo adatokanetrol.txt 
+			echo "Add meg a keresett szót"
+			read szo
+			echo "Keresek..."
+			echo "$szo"
+			grep -c $szo adatoknetrol.txt 
+			;;
+		e)
+			echo "Add meg a keresett szót:"
+			read szo
+			echo "Keresek..."
+			grep $szo adatoknetrol.txt
 			;;
 	esac
-done		
+done
